@@ -1,27 +1,29 @@
+function sumArray(arr) {
+  return arr.reduce((acc, num) => acc + num, 0);
+}
+
+function findMin(arr) {
+  return Math.min(...arr);
+}
+
+function findMax(arr) {
+  return Math.max(...arr);
+}
+
+function findEvenElements(arr) {
+  return arr.filter((num) => num % 2 === 0);
+}
+
+function findOddElements(arr) {
+  return arr.filter((num) => num % 2 !== 0);
+}
+
 function miniMaxSum(arr) {
-  let min = Number.MAX_SAFE_INTEGER;
-  let max = Number.MIN_SAFE_INTEGER;
-  let totalSum = 0;
-  const evenElements = [];
-  const oddElements = [];
-
-  for (let i = 0; i < arr.length; i++) {
-    totalSum += arr[i];
-
-    if (arr[i] < min) {
-      min = arr[i];
-    }
-
-    if (arr[i] > max) {
-      max = arr[i];
-    }
-
-    if (arr[i] % 2 === 0) {
-      evenElements.push(arr[i]);
-    } else {
-      oddElements.push(arr[i]);
-    }
-  }
+  const totalSum = sumArray(arr);
+  const min = findMin(arr);
+  const max = findMax(arr);
+  const evenElements = findEvenElements(arr);
+  const oddElements = findOddElements(arr);
 
   const minSum = totalSum - max;
   const maxSum = totalSum - min;
